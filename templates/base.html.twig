@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/">Домашняя страница</a>
+                  </li>
+                  <li class="nav-item"> 
+                    <a class="nav-link active" href="/remont/new">Добавить ремонт</a>
+                  </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="/eff/explo/new">Добавить состояние</a>
+                    </li>
+                </ul>
+                <span class="navbar-text mr-2">
+                </span>
+              </div>
+            </div>
+        </nav>      
+    </body>
+    {% block body %}{% endblock %}
+</html>

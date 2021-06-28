@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit FlyOut{% endblock %}
+
+{% block body %}
+    <h1>Edit FlyOut</h1>
+
+    {{ include('fly_out/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('fly_out_index') }}">back to list</a>
+
+    {{ include('fly_out/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EffExplo index{% endblock %}
+
+{% block body %}
+    <h1>EffExplo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>State</th>
+                <th>TimeOfState</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eff_explo in eff_explos %}
+            <tr>
+                <td>{{ eff_explo.id }}</td>
+                <td>{{ eff_explo.state }}</td>
+                <td>{{ eff_explo.timeOfState }}</td>
+                <td>
+                    <a href="{{ path('eff_explo_show', {'id': eff_explo.id}) }}">show</a>
+                    <a href="{{ path('eff_explo_edit', {'id': eff_explo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('eff_explo_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DateInterval{% endblock %}
+
+{% block body %}
+    <h1>DateInterval</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ date_interval.id }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{{ date_interval.startdate ? date_interval.startdate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{{ date_interval.enddate ? date_interval.enddate|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('date_interval_index') }}">back to list</a>
+
+    <a href="{{ path('date_interval_edit', {'id': date_interval.id}) }}">edit</a>
+
+    {{ include('date_interval/_delete_form.html.twig') }}
+{% endblock %}

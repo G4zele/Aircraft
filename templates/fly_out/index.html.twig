@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FlyOut index{% endblock %}
+
+{% block body %}
+    <h1>FlyOut index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>FlyingTime</th>
+                <th>TimeBeforeFly</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fly_out in fly_outs %}
+            <tr>
+                <td>{{ fly_out.id }}</td>
+                <td>{{ fly_out.date ? fly_out.date|date('Y-m-d') : '' }}</td>
+                <td>{{ fly_out.flyingTime }}</td>
+                <td>{{ fly_out.timeBeforeFly }}</td>
+                <td>
+                    <a href="{{ path('fly_out_show', {'id': fly_out.id}) }}">show</a>
+                    <a href="{{ path('fly_out_edit', {'id': fly_out.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fly_out_new') }}">Create new</a>
+{% endblock %}

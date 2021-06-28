@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Remont index{% endblock %}
+
+{% block body %}
+    <h1>Remont index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TimeOnTO</th>
+                <th>TimeOnOperTO</th>
+                <th>TimeOfMidRem</th>
+                <th>TimeDir</th>
+                <th>TimeYstr</th>
+                <th>TrudDop</th>
+                <th>TrudMain</th>
+                <th>TrudDeMont</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for remont in remonts %}
+            <tr>
+                <td>{{ remont.id }}</td>
+                <td>{{ remont.timeOnTO }}</td>
+                <td>{{ remont.timeOnOperTO }}</td>
+                <td>{{ remont.timeOfMidRem }}</td>
+                <td>{{ remont.timeDir }}</td>
+                <td>{{ remont.timeYstr }}</td>
+                <td>{{ remont.trudDop }}</td>
+                <td>{{ remont.trudMain }}</td>
+                <td>{{ remont.trudDeMont }}</td>
+                <td>
+                    <a href="{{ path('remont_show', {'id': remont.id}) }}">show</a>
+                    <a href="{{ path('remont_edit', {'id': remont.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('remont_new') }}">Create new</a>
+{% endblock %}

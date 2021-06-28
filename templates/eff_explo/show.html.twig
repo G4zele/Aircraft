@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EffExplo{% endblock %}
+
+{% block body %}
+    <h1>EffExplo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ eff_explo.id }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ eff_explo.state }}</td>
+            </tr>
+            <tr>
+                <th>TimeOfState</th>
+                <td>{{ eff_explo.timeOfState }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('eff_explo_index') }}">back to list</a>
+
+    <a href="{{ path('eff_explo_edit', {'id': eff_explo.id}) }}">edit</a>
+
+    {{ include('eff_explo/_delete_form.html.twig') }}
+{% endblock %}

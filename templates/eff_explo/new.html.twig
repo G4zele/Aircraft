@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EffExplo{% endblock %}
+
+{% block body %}
+    <h1>Create new EffExplo</h1>
+    <h3>P, G, A, M, E, ZV, Y, Ob, Tb, Opf, TpfOne, TpfTwo, TpfThr, Z, Dv, J, D, Or, R</h3>
+    {{ include('eff_explo/_form.html.twig') }}
+
+    <a href="{{ path('eff_explo_index') }}">back to list</a>
+{% endblock %}

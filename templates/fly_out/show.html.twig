@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FlyOut{% endblock %}
+
+{% block body %}
+    <h1>FlyOut</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fly_out.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ fly_out.date ? fly_out.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FlyingTime</th>
+                <td>{{ fly_out.flyingTime }}</td>
+            </tr>
+            <tr>
+                <th>TimeBeforeFly</th>
+                <td>{{ fly_out.timeBeforeFly }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('fly_out_index') }}">back to list</a>
+
+    <a href="{{ path('fly_out_edit', {'id': fly_out.id}) }}">edit</a>
+
+    {{ include('fly_out/_delete_form.html.twig') }}
+{% endblock %}

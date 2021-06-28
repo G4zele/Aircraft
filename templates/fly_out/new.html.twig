@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FlyOut{% endblock %}
+
+{% block body %}
+    <h1>Create new FlyOut</h1>
+
+    {{ include('fly_out/_form.html.twig') }}
+
+    <a href="{{ path('fly_out_index') }}">back to list</a>
+{% endblock %}

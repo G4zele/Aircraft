@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EffExplo{% endblock %}
+
+{% block body %}
+    <h1>Edit EffExplo</h1>
+
+    {{ include('eff_explo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('eff_explo_index') }}">back to list</a>
+
+    {{ include('eff_explo/_delete_form.html.twig') }}
+{% endblock %}

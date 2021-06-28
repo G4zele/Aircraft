@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Remont{% endblock %}
+
+{% block body %}
+    <h1>Remont</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ remont.id }}</td>
+            </tr>
+            <tr>
+                <th>TimeOnTO</th>
+                <td>{{ remont.timeOnTO }}</td>
+            </tr>
+            <tr>
+                <th>TimeOnOperTO</th>
+                <td>{{ remont.timeOnOperTO }}</td>
+            </tr>
+            <tr>
+                <th>TimeOfMidRem</th>
+                <td>{{ remont.timeOfMidRem }}</td>
+            </tr>
+            <tr>
+                <th>TimeDir</th>
+                <td>{{ remont.timeDir }}</td>
+            </tr>
+            <tr>
+                <th>TimeYstr</th>
+                <td>{{ remont.timeYstr }}</td>
+            </tr>
+            <tr>
+                <th>TrudDop</th>
+                <td>{{ remont.trudDop }}</td>
+            </tr>
+            <tr>
+                <th>TrudMain</th>
+                <td>{{ remont.trudMain }}</td>
+            </tr>
+            <tr>
+                <th>TrudDeMont</th>
+                <td>{{ remont.trudDeMont }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('remont_index') }}">back to list</a>
+
+    <a href="{{ path('remont_edit', {'id': remont.id}) }}">edit</a>
+
+    {{ include('remont/_delete_form.html.twig') }}
+{% endblock %}

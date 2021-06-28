@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DateInterval index{% endblock %}
+
+{% block body %}
+    <h1>DateInterval index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for date_interval in date_intervals %}
+            <tr>
+                <td>{{ date_interval.id }}</td>
+                <td>{{ date_interval.startdate ? date_interval.startdate|date('Y-m-d') : '' }}</td>
+                <td>{{ date_interval.enddate ? date_interval.enddate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('date_interval_show', {'id': date_interval.id}) }}">show</a>
+                    <a href="{{ path('date_interval_edit', {'id': date_interval.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('date_interval_new') }}">Create new</a>
+{% endblock %}

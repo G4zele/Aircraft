@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plane index{% endblock %}
+
+{% block body %}
+    <h1 class="display-1">Plane index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>BoardNumber</th>
+                <th>ReleaseDate</th>
+                <th>ReleasePlace</th>
+                <th>FixDate</th>
+                <th>FixPlace</th>
+                <th>ExploTime</th>
+                <th>FixExploTime</th>
+                <th>StartingExploTime</th>
+                <th>FlyTime</th>
+                <th>SitDowns</th>
+                <th>countFails</th>
+                <th>include</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plane in planes %}
+            <tr>
+                <td>{{ plane.id }}</td>
+                <td>{{ plane.Type }}</td>
+                <td>{{ plane.boardNumber }}</td>
+                <td>{{ plane.releaseDate ? plane.releaseDate|date('Y-m-d') : '' }}</td>
+                <td>{{ plane.releasePlace }}</td>
+                <td>{{ plane.fixDate ? plane.fixDate|date('Y-m-d') : '' }}</td>
+                <td>{{ plane.fixPlace }}</td>
+                <td>{{ plane.exploTime }}</td>
+                <td>{{ plane.fixExploTime }}</td>
+                <td>{{ plane.startingExploTime }}</td>
+                <td>{{ plane.FlyTime }}</td>
+                <td>{{ plane.sitDowns }}</td>
+                <td>{{ plane.countFails }}</td>
+                <td>{{ plane.include }}</td>
+                <td>
+                    <a href="{{ path('plane_show', {'id': plane.id}) }}">show</a>
+                    <a href="{{ path('plane_edit', {'id': plane.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('plane_new') }}">Create new</a>
+    {{ include('date_interval/_form.html.twig') }}
+    {% if data %}
+    <div>Вероятность безотказной работы - {{ data.pt }}</div>
+    <div>Интенсивность отказов - {{ data.lt }}</div>
+    <div>Плотность вероятности отказов - {{ data.ft }}</div>
+    <div>Средняя наработка до отказа - {{ data.tsr }}</div>
+    <div>Среднее квадратическое отклонение наработки до отказа - {{ data.sigma }}</div>
+    <div>Параметр потока отказов - {{ data.omega }}</div>
+    <div>Вероятность безотказной работы - {{ data.pTau }}</div>
+    <div>Число отказов на 1000 часов налёта - {{ data.Kthousand }}</div>
+    {{ render_chart(chart) }}
+    {% endif %}
+    <div>P100ТП - {{ dataOfEff.Phtp }}</div>
+    <div>Кп1 - {{ dataOfEff.KpOne }}</div>
+    <div>Кир - {{ dataOfEff.Kir }}</div>
+    <div>Квир - {{ dataOfEff.Kvir }}</div>
+    <div>Кп2 - {{ dataOfEff.KpTwo }}</div>
+    <div>Киспр - {{ dataOfEff.Kispr }}</div>
+    <div>Кт - {{ dataOfEff.Kt }}</div>
+{% endblock %}
